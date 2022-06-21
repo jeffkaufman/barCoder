@@ -110,6 +110,7 @@ while (<paramFile>) {
 		elsif 	($1=~/gapLimit/) { 	$spacerParams[3]=$hit; }
 		elsif 	($1=~/numMismatch/) { 	$spacerParams[4]=$hit; }	
 		elsif 	($1=~/primerGap/) { 	$spacerParams[5]=$hit; }
+		elsif 	($1=~/fractionGc/) { 	$spacerParams[6]=$hit; }
 	} 
 }
 

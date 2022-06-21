@@ -126,8 +126,8 @@ spacer_numMismatch = 1		#maximum number of mismatches in stem of
 				# stem-loop to be a problem
 spacer_primerGap = 100		#number of base pairs separating primers (includes
 				# the length of the probe)
-				
-
+spacer_fractionGc = 1		#fraction GC (between 0 and 1), or -1 to match
+				#organism
 
 
 
