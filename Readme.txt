@@ -36,6 +36,7 @@
 #	- StandAloneBlastPlus (bl2seq, blastn)
 #	- EMBOSS
 # * nt database from NCBI: ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.*
+# * See "Detailed Installation" below for more one specific path.
 #
 # Test data is located in the Projects directory.	
 #
@@ -107,4 +108,39 @@
 #	- log files: complete description of what the script did (see
 #	 	parameters.txt for some options)
 #
+#########################################
+# Detailed Installation
+#########################################
+#
+# Steps for installing dependencies and running barCoder, starting
+# from a bare Ubuntu 22 LTS instance.  You need at least 64 GB of RAM
+# and, if you're going to BLAST against the NCBI database, a disk of
+# at least 500 GB.
+#
+#   sudo apt-get update
+#   sudo apt-get upgrade
+#   sudo apt install emacs perl git cpanminus gcc libexpat1-dev \
+#                    amap-align ncbi-blast+ bioperl-run
+#   curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+#   sh Miniconda3-latest-Linux-x86_64.sh
+#    -> say yes to all questions
+#   source ~/.bashrc
+#   conda install -c bioconda blast
+#   conda update --all
+#   conda install perl-bioperl
+#
+# Possibly you also need to run:
+#
+#   cpanm Bio::Perl
+#   cpanm Bio::DB::EUtilities
+#   cpanm Bio::Tools::Run::StandAloneBlastPlus --force
+#   cpanm Bio::Factory::EMBOSS --force
+#
+# Install the NCBI DB:
+#
+#   update_blastdb --decompress nt
+#   sudo mkdir /nt/
+#   sudo chown ubuntu /nt/
+#   mv nt.* /nt/
+#    -> then modify parameters.txt to replace "/nt/nt_v5" with "/nt/nt"
 #########################################
