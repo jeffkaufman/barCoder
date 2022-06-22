@@ -51,12 +51,13 @@ sub addSpacer {
 	# Match spacer GC content to genome GC content
 	#------------------------------
 	#update log and user on progress
-	update("\nAll primers generated, adding spacers: \n".
-		"\tComputing spacer GC content to match genome...",$v,$log);
+	update("\nAll primers generated, adding spacers: \n", $v,$log);
 	#compute the GC content of the target genome and 3 primers
 	my $percentGenomeGC = $fractionGc;
 	if ($percentGenomeGC < 0) {
-	    $percentGenomeGC=getFileGCcontent($genome);
+		update("\tComputing spacer GC content to match genome...",$v,$log);
+		$percentGenomeGC=getFileGCcontent($genome);
+		update("done\n",$v,$log);
 	}
 	my $GCprimer1=0; while($primer1=~m/[GC]/g) { $GCprimer1++ };
 	my $GCprimer2=0; while($primer2=~m/[GC]/g) { $GCprimer2++ };
@@ -74,7 +75,6 @@ sub addSpacer {
     #compute number of ATs per spacer
     my $ATsPerSpacer=floor(($totSpacerLength-$spacerGCsNeeded)/2);
 	#update log and user on progress
-	update("done\n",$v,$log);
 	#------------------------------
 	# Generate random spacer sequences and check for stem-loops and 
 	# start codons
